@@ -9,9 +9,13 @@ import "./TabButton.css";
 // }
 
 export default function TabButton({ children }) {
+    // function clickHandler(){}
+    function handleClick() {
+        console.log("Hello from TabButton");
+    }
     return (
         <li>
-            <button>{children}</button>
+            <button onClick={handleClick}>{children}</button>
         </li>
     );
 }
