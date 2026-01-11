@@ -5,3 +5,4 @@ dist-ssr/
 .env
 .vscode/
 *.local
+slides/
