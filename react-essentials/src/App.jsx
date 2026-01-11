@@ -7,11 +7,26 @@ import { CORE_CONCEPTS } from "./data.js";
 import { EXAMPLES } from "./data.js";
 
 function App() {
-    const [selectedTopic, setSelectedTopic] = useState("components");
+    const [selectedTopic, setSelectedTopic] = useState();
 
     function handleSelect(selectedButton) {
         setSelectedTopic(selectedButton);
         // console.log(selectedTopic);
+    }
+
+    /* //////////////////////////////////////////////////// */
+    // selectedTopic version 3
+    let tabContent = <p>Please select a topic.</p>;
+    if (selectedTopic) {
+        tabContent = (
+            <div id="tab-content">
+                <h3>{EXAMPLES[selectedTopic].title}</h3>
+                <p>{EXAMPLES[selectedTopic].description}</p>
+                <pre>
+                    <code>{EXAMPLES[selectedTopic].code}</code>
+                </pre>
+            </div>
+        );
     }
     return (
         <div>
@@ -46,13 +61,38 @@ function App() {
                             State
                         </TabButton>
                     </menu>
-                    <div id="tab-content">
-                        <h3>{EXAMPLES[selectedTopic].title}</h3>
-                        <p>{EXAMPLES[selectedTopic].description}</p>
-                        <pre>
-                            <code>{EXAMPLES[selectedTopic].code}</code>
-                        </pre>
-                    </div>
+                    {/* //////////////////////////////////////////////////// */}
+                    {/* selectedTopic version 1 */}
+                    {selectedTopic ? (
+                        <div id="tab-content">
+                            {/* {selectedTopic===undefined ? <p>Please select a topic.</p> : null} */}
+                            {/* {!selectedTopic ? <p>Please select a topic.</p> : null} */}
+                            <h3>{EXAMPLES[selectedTopic].title}</h3>
+                            <p>{EXAMPLES[selectedTopic].description}</p>
+                            <pre>
+                                <code>{EXAMPLES[selectedTopic].code}</code>
+                            </pre>
+                        </div>
+                    ) : (
+                        <p>Please select a topic.</p>
+                    )}
+
+                    {/* //////////////////////////////////////////////////// */}
+                    {/* selectedTopic version 2 */}
+                    {selectedTopic && (
+                        <div id="tab-content">
+                            <h3>{EXAMPLES[selectedTopic].title}</h3>
+                            <p>{EXAMPLES[selectedTopic].description}</p>
+                            <pre>
+                                <code>{EXAMPLES[selectedTopic].code}</code>
+                            </pre>
+                        </div>
+                    )}
+                    {!selectedTopic && <p>Please select a topic.</p>}
+
+                    {/* //////////////////////////////////////////////////// */}
+                    {/* selectedTopic version 3 */}
+                    {tabContent}
                 </section>
             </main>
         </div>
