@@ -16,18 +16,18 @@ function App() {
 
     /* //////////////////////////////////////////////////// */
     // selectedTopic version 3
-    let tabContent = <p>Please select a topic.</p>;
-    if (selectedTopic) {
-        tabContent = (
-            <div id="tab-content">
-                <h3>{EXAMPLES[selectedTopic].title}</h3>
-                <p>{EXAMPLES[selectedTopic].description}</p>
-                <pre>
-                    <code>{EXAMPLES[selectedTopic].code}</code>
-                </pre>
-            </div>
-        );
-    }
+    // let tabContent = <p>Please select a topic.</p>;
+    // if (selectedTopic) {
+    //     tabContent = (
+    //         <div id="tab-content">
+    //             <h3>{EXAMPLES[selectedTopic].title}</h3>
+    //             <p>{EXAMPLES[selectedTopic].description}</p>
+    //             <pre>
+    //                 <code>{EXAMPLES[selectedTopic].code}</code>
+    //             </pre>
+    //         </div>
+    //     );
+    // }
     return (
         <div>
             <Header></Header>
@@ -35,14 +35,20 @@ function App() {
                 <section id="core-concepts">
                     <h2>Core Concepts</h2>
                     <ul>
-                        <CoreConcept {...CORE_CONCEPTS[0]}></CoreConcept>
+                        {CORE_CONCEPTS.map((conceptItem) => (
+                            <CoreConcept
+                                key={conceptItem.title}
+                                {...conceptItem}
+                            ></CoreConcept>
+                        ))}
+                        {/* <CoreConcept {...CORE_CONCEPTS[0]}></CoreConcept>
                         <CoreConcept {...CORE_CONCEPTS[1]}></CoreConcept>
                         <CoreConcept {...CORE_CONCEPTS[2]}></CoreConcept>
                         <CoreConcept
                             title={CORE_CONCEPTS[3].title}
                             description={CORE_CONCEPTS[3].description}
                             image={CORE_CONCEPTS[3].image}
-                        ></CoreConcept>
+                        ></CoreConcept> */}
                     </ul>
                 </section>
                 <section id="examples">
@@ -75,11 +81,11 @@ function App() {
                     </menu>
                     {/* //////////////////////////////////////////////////// */}
                     {/* selectedTopic version 1 */}
-                    {selectedTopic ? (
+                    {/* {selectedTopic ? (
                         <div id="tab-content">
                             {/* {selectedTopic===undefined ? <p>Please select a topic.</p> : null} */}
-                            {/* {!selectedTopic ? <p>Please select a topic.</p> : null} */}
-                            <h3>{EXAMPLES[selectedTopic].title}</h3>
+                    {/* {!selectedTopic ? <p>Please select a topic.</p> : null} */}
+                    {/* <h3>{EXAMPLES[selectedTopic].title}</h3>
                             <p>{EXAMPLES[selectedTopic].description}</p>
                             <pre>
                                 <code>{EXAMPLES[selectedTopic].code}</code>
@@ -87,7 +93,7 @@ function App() {
                         </div>
                     ) : (
                         <p>Please select a topic.</p>
-                    )}
+                    )} */}
 
                     {/* //////////////////////////////////////////////////// */}
                     {/* selectedTopic version 2 */}
@@ -104,7 +110,7 @@ function App() {
 
                     {/* //////////////////////////////////////////////////// */}
                     {/* selectedTopic version 3 */}
-                    {tabContent}
+                    {/* {tabContent} */}
                 </section>
             </main>
         </div>
