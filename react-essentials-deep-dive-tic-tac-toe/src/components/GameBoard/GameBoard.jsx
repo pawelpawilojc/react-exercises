@@ -43,6 +43,7 @@ export default function GameBoard({ onSelectSquare, turns }) {
                                     onClick={() =>
                                         onSelectSquare(rowIndex, colIndex)
                                     }
+                                    disabled={playerSymbol !== null}
                                 >
                                     {playerSymbol}
                                 </button>
