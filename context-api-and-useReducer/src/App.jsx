@@ -70,7 +70,7 @@ function App() {
     }
 
     return (
-        <CartContext>
+        <CartContext value={{ items: [] }}>
             {/* <CartContext.Provider> in React versions < 19 */}
             <Header
                 cart={shoppingCart}
