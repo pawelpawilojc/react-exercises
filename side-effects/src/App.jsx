@@ -16,7 +16,7 @@ function App() {
     const selectedPlace = useRef();
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [availablePlaces, setAvailablePlaces] = useState([]);
-    const [pickedPlaces, setPickedPlaces] = useState([storedPlaces]);
+    const [pickedPlaces, setPickedPlaces] = useState(storedPlaces);
 
     useEffect(() => {
         // turned off to test without location permission in browser
